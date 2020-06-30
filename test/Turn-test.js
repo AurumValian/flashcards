@@ -71,7 +71,7 @@ describe('Turn', function() {
       "question": "What is a comma-separated list of related values?",
       "answerChoices": ["array", "object", "function"],
       "correctAnswer": "array"
-    });
+    })
   })
 
   it('should be able to return a different Card', function () {
@@ -83,6 +83,10 @@ describe('Turn', function() {
       "question": "What type of prototype method directly modifies the existing array?",
       "answerChoices": ["mutator method", "accessor method", "iteration method"],
       "correctAnswer": "mutator method"
-    });
+    })
+  })
+
+  it('should be able to correctly evaluate the users guess', function() {
+    
   })
 })
