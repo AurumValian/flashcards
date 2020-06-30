@@ -66,11 +66,23 @@ describe('Turn', function() {
     let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
     let turn = new Turn('object', card);
     let currentCard = turn.returnCard();
-    (guess).should.deep.equal({
+    (currentCard).should.deep.equal({
       "id": 2,
       "question": "What is a comma-separated list of related values?",
       "answerChoices": ["array", "object", "function"],
       "correctAnswer": "array"
+    });
+  })
+
+  it('should be able to return a different Card', function () {
+    let card = new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method");
+    let turn = new Turn('mutator method', card);
+    let currentCard = turn.returnCard();
+    (currentCard).should.deep.equal({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
     });
   })
 })
