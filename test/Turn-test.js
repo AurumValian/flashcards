@@ -5,30 +5,60 @@ const Card = require('../src/Card');
 const Turn = require('../src/Turn');
 
 describe('Turn', function() {
+  
+  it('should be a function', function() {
+    let turn = new Turn();
+    (Turn).should.be.a('function');
+  })
+  
+  it('should be an instance of Turn', function() {
+    let turn = new Turn();
+    (turn).should.be.an.instanceOf(Turn);
+  })
+  
+  it('should store a users guess', function() {
+    let turn = new Turn('array');
+    (turn.guess).should.equal('array');
+  })
 
-    it('should be a function', function() {
-        let turn = new Turn();
-        (Turn).should.be.a('function');
+  it('should be able to store a different guess', function() {
+    let turn = new Turn('object');
+    (turn.guess).should.equal('object');
+  })
+  
+  it('should store a Card', function() {
+    let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+    let turn = new Turn('array', card);
+    (turn.currentCard).should.deep.equal({
+    "id": 2,
+    "question": "What is a comma-separated list of related values?",
+    "answerChoices": ["array", "object", "function"],
+    "correctAnswer": "array"
     })
+  })
 
-    it('should be an instance of Turn', function() {
-        let turn = new Turn();
-        (turn).should.be.an.instanceOf(Turn);
+  it('should be able to store a different Card', function() {
+    let card = new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method");
+    let turn = new Turn('mutator method', card);
+    (turn.currentCard).should.deep.equal({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
     })
+  })
 
-    it('should store a users answer', function() {
-        let turn = new Turn('array');
-        (turn.userAnswer).should.equal('array');
-    })
+  it('should be able to return the guess', function() {
+    let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+    let turn = new Turn('array', card);
+    let guess = turn.returnGuess;
+    (guess).should.equal('array');
+  })
 
-    it('should store a Card', function() {
-        let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
-        let turn = new Turn('array', card);
-        (turn.currentCard).should.deep.equal({
-            "id": 2,
-            "question": "What is a comma-separated list of related values?",
-            "answerChoices": ["array", "object", "function"],
-            "correctAnswer": "array"
-        })
-    })
+  it('should be able to return a different guess', function () {
+    let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+    let turn = new Turn('array', card);
+    let guess = turn.returnGuess;
+    (guess).should.equal('array');
+  })
 })
