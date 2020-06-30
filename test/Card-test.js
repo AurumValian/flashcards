@@ -1,16 +1,16 @@
 const chai = require('chai');
-var should = require('chai').should();
+var should = chai.should();
 
 const Card = require('../src/Card');
 
 describe('Card', function() {
 
-  it.skip('should be a function', function() {
+  it('should be a function', function() {
     const card = new Card();
     (Card).should.be.a('function');
   });
 
-  it.skip('should be an instance of Card', function() {
+  it('should be an instance of Card', function() {
     const card = new Card();
     (card).should.be.an.instanceof(Card);
   }); 
