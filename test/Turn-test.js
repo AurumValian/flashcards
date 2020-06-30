@@ -51,14 +51,26 @@ describe('Turn', function() {
   it('should be able to return the guess', function() {
     let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
     let turn = new Turn('array', card);
-    let guess = turn.returnGuess;
+    let guess = turn.returnGuess();
     (guess).should.equal('array');
   })
 
   it('should be able to return a different guess', function () {
     let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
-    let turn = new Turn('array', card);
-    let guess = turn.returnGuess;
-    (guess).should.equal('array');
+    let turn = new Turn('object', card);
+    let guess = turn.returnGuess();
+    (guess).should.equal('object');
+  })
+
+  it('should be able to return the Card', function() {
+    let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+    let turn = new Turn('object', card);
+    let currentCard = turn.returnCard();
+    (guess).should.deep.equal({
+      "id": 2,
+      "question": "What is a comma-separated list of related values?",
+      "answerChoices": ["array", "object", "function"],
+      "correctAnswer": "array"
+    });
   })
 })
