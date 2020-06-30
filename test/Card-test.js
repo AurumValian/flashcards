@@ -1,5 +1,5 @@
 const chai = require('chai');
-var should = chai.should();
+const should = chai.should();
 
 const Card = require('../src/Card');
 
@@ -16,17 +16,17 @@ describe('Card', function() {
   }); 
 
   it('should store a question', function() {
-    let card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    (card.question).should.equal('What allows you to define a set of related information using key-value pairs?');
+    let card = new Card(2, 'What is a comma-separated list of related values?', ["array", "object", "function"], "array");
+    (card.question).should.equal('What is a comma-separated list of related values?');
   });  
 
   it('should store a list of possible answers', function() {
-    let card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    (card.answerChoices).should.deep.equal(['object', 'array', 'function']);
+    let card = new Card(2, 'What is a comma-separated list of related values?', ["array", "object", "function"], "array");
+    (card.answerChoices).should.deep.equal(["array", "object", "function"]);
   });  
 
   it('should store the correct answer', function() {
-    let card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    (card.correctAnswer).should.equal('object');
+    let card = new Card(2, 'What is a comma-separated list of related values?', ["array", "object", "function"], "array");
+    (card.correctAnswer).should.equal('array');
   });
 });
