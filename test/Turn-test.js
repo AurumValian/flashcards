@@ -102,4 +102,10 @@ describe('Turn', function() {
     let feedback = turn.giveFeedback();
     (feedback).should.equal("incorrect!");
   })
+
+  it('should fail this test', function () {
+    let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+    let turn = new Turn('object', card);
+    (turn.currentCard).should.equal('turkey');
+  })
 })
