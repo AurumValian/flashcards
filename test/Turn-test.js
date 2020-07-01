@@ -87,6 +87,19 @@ describe('Turn', function() {
   })
 
   it('should be able to correctly evaluate the users guess', function() {
-    
+    let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+    let turn = new Turn('array', card);
+    let turnTwo = new Turn('object', card);
+    let isGuessCorrect = turn.evaluateGuess();
+    let isSecondGuessCorrect = turnTwo.evaluateGuess();
+    (isGuessCorrect).should.equal('true');
+    (isSecondGuessCorrect).should.equal('false');
+  })
+
+  it('should be able to give feedback', function () {
+    let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
+    let turn = new Turn('object', card);
+    let feedback = turn.giveFeedback();
+    (feedback).should.equal("incorrect!");
   })
 })
