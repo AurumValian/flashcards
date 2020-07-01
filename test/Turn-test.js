@@ -92,8 +92,8 @@ describe('Turn', function() {
     let turnTwo = new Turn('object', card);
     let isGuessCorrect = turn.evaluateGuess();
     let isSecondGuessCorrect = turnTwo.evaluateGuess();
-    (isGuessCorrect).should.equal('true');
-    (isSecondGuessCorrect).should.equal('false');
+    (isGuessCorrect).should.equal(true);
+    (isSecondGuessCorrect).should.equal(false);
   })
 
   it('should be able to give feedback', function () {
