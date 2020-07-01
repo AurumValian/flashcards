@@ -98,9 +98,9 @@ describe('Turn', function() {
 
   it('should be able to give feedback', function () {
     let card = new Card(2, "What is a comma-separated list of related values?", ["array", "object", "function"], "array");
-    let turn = new Turn('object', card);
+    let turn = new Turn('array', card);
     let feedback = turn.giveFeedback();
-    (feedback).should.equal("incorrect!");
+    (feedback).should.equal("correct!");
   })
 
   it('should fail this test', function () {
