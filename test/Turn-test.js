@@ -7,7 +7,6 @@ const Turn = require('../src/Turn');
 describe('Turn', function() {
   
   it('should be a function', function() {
-    let turn = new Turn();
     (Turn).should.be.a('function');
   })
   
