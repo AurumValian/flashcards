@@ -11,9 +11,10 @@ class Round {
     return this.deck.cardArray[0];
   }
 
-  takeTurn(answer) {
-    if (typeof(answer) === 'string') {
-
+  takeTurn(guess) {
+    if (typeof(guess) === 'string') {
+      this.turns++;
+      let turn = new Turn(guess, this.returnCurrentCard());
     } else {
       return 'Answer must be in form of a string';
     }
