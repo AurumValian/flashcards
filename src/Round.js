@@ -1,5 +1,5 @@
 class Round {
-  constructor(deck) {
+  constructor(deck = []) {
     this.deck = deck;
   }
 }
