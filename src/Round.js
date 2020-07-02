@@ -15,8 +15,18 @@ class Round {
     if (typeof(guess) === 'string') {
       this.turns++;
       let turn = new Turn(guess, this.returnCurrentCard());
+      this.removeCurrentCard(turn);
+      return turn.giveFeedback();
     } else {
       return 'Answer must be in form of a string';
+    }
+  }
+
+  removeCurrentCard(turn) {
+    if (turn === 'incorrect') {
+      this.incorrectGuesses.push(this.deck.cardArray.shift());
+    } else {
+      this.deck.cardArray.shift();
     }
   }
 }
