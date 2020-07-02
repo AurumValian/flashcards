@@ -33,7 +33,14 @@ class Round {
   }
 
   calculatePercentCorrect() {
-    return (this.incorrectGuesses.length / this.turns) * 100
+    const percent = this.incorrectGuesses.length > 0 ? (this.incorrectGuesses.length / this.turns) * 100 : 100;
+    return percent;
+  }
+
+  endRound() {
+    if (this.deck.cardArray.length === 0) {
+      return `** Round Over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`;
+    }
   }
 }
 

@@ -124,6 +124,19 @@ describe('Round', function() {
     const percentCorrect = round.calculatePercentCorrect();
     (percentCorrect).should.equal(50);
   })
+
+  it('should return the percent correct on end of round', function() {
+    const deck = new Deck([{
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    }]);
+    const round = new Round(deck);
+    const guess = round.takeTurn('mutator method');
+    const endMessage = round.endRound();
+    (endMessage).should.equal(`** Round Over! ** You answered 100% of the questions correctly!`);
+  })
 })
 
 describe('Round - Taking a Turn', function() {
