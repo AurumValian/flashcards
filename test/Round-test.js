@@ -100,6 +100,30 @@ describe('Round', function() {
       "correctAnswer": "mutator method"
     })
   })
+
+  it('should be able to calculate the percentage of questions answered correctly', function() {
+    const deck = new Deck([{
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    }, {
+      "id": 4,
+      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "accessor method"
+    }, {
+      "id": 5,
+      "question": "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "iteration method"
+    }]);
+    const round = new Round(deck);
+    const guess = round.takeTurn('mutator method');
+    const guess2 = round.takeTurn('mutator method');
+    const percentCorrect = round.calculatePercentCorrect();
+    (percentCorrect).should.equal(50);
+  })
 })
 
 describe('Round - Taking a Turn', function() {
@@ -224,4 +248,5 @@ describe('Round - Taking a Turn', function() {
     (guess).should.equal('incorrect!');
     (round.incorrectGuesses).should.deep.equal([3]);
   })
+
 })

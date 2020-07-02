@@ -31,6 +31,10 @@ class Round {
       this.deck.cardArray.shift();
     }
   }
+
+  calculatePercentCorrect() {
+    return (this.incorrectGuesses.length / this.turns) * 100
+  }
 }
 
 module.exports = Round;
