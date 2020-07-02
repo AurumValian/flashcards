@@ -93,5 +93,11 @@ describe('Round', function() {
     }]);
     const round = new Round(deck);
     const currentCard = round.returnCurrentCard();
+    (currentCard).should.deep.equal({
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    })
   })
 })

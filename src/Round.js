@@ -4,6 +4,10 @@ class Round {
     this.turns = 0;
     this.incorrectGuesses = [];
   }
+
+  returnCurrentCard() {
+    return this.deck.cardArray[0];
+  }
 }
 
 module.exports = Round;
