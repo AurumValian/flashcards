@@ -63,6 +63,16 @@ describe('Round', function() {
       "correctAnswer": "mutator method"
     });
   })
+
+  it('should list the number of turns as 0 by default', function() {
+    const round = new Round();
+    (round.turns).should.equal(0);
+  })
+
+  it('should have an empty array of incorrect guesses by default', function() {
+    const round = new Round();
+    (round.incorrectGuesses).should.deep.equal([]);
+  })
   
   it('should be able to return the current card', function() {
     const deck = new Deck([{
@@ -82,5 +92,6 @@ describe('Round', function() {
       "correctAnswer": "iteration method"
     }]);
     const round = new Round(deck);
+    const currentCard = round.returnCurrentCard();
   })
 })
