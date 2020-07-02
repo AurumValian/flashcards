@@ -101,3 +101,32 @@ describe('Round', function() {
     })
   })
 })
+
+describe('Round - Taking a Turn', function() {
+
+  it('should only accept answers in the form of strings', function() {
+    const deck = new Deck([{
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    }, {
+      "id": 4,
+      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "accessor method"
+    }, {
+      "id": 5,
+      "question": "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "iteration method"
+    }]);
+    const round = new Round(deck);
+    const guess = round.takeTurn(7);
+    const guess2 = round.takeTurn(false);
+    (guess).should.equal('Answer must be in form of a string');
+    (guess2).should.equal('Answer must be in form of a string');
+  })
+
+//   it('should be able to increase the turn count')
+})

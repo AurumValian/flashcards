@@ -1,3 +1,5 @@
+const Turn = require('../src/Turn');
+
 class Round {
   constructor(deck = []) {
     this.deck = deck;
@@ -7,6 +9,14 @@ class Round {
 
   returnCurrentCard() {
     return this.deck.cardArray[0];
+  }
+
+  takeTurn(answer) {
+    if (typeof(answer) === 'string') {
+
+    } else {
+      return 'Answer must be in form of a string';
+    }
   }
 }
 
