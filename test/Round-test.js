@@ -149,4 +149,33 @@ describe('Round - Taking a Turn', function() {
     round.takeTurn('mutator method');
     (round.turns).should.equal(1);
   })
+
+  it('should remove the current card from the deck', function() {
+    const deck = new Deck([{
+      "id": 3,
+      "question": "What type of prototype method directly modifies the existing array?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "mutator method"
+    }, {
+      "id": 4,
+      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "accessor method"
+    }, {
+      "id": 5,
+      "question": "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "iteration method"
+    }]);
+    const round = new Round(deck);
+    round.takeTurn('mutator method');
+    const currentCard = round.returnCurrentCard();
+    (currentCard).should.deep.equal({
+      "id": 4,
+      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
+      "answerChoices": ["mutator method", "accessor method", "iteration method"],
+      "correctAnswer": "accessor method"
+    })
+  })
+  // it('should evaluate whether a guess is correct or incorrect')
 })
