@@ -14,8 +14,8 @@ class Round {
   takeTurn(guess) {
     if (typeof(guess) === 'string') {
       this.turns++;
-      let turn = new Turn(guess, this.returnCurrentCard());
-      let response = turn.giveFeedback();
+      const turn = new Turn(guess, this.returnCurrentCard());
+      const response = turn.giveFeedback();
       this.removeCurrentCard(response);
       return response;
     } else {
@@ -25,7 +25,7 @@ class Round {
 
   removeCurrentCard(turn) {
     if (turn === 'incorrect!') {
-      let incorrectCard = this.deck.cardArray.shift();
+      const incorrectCard = this.deck.cardArray.shift();
       this.incorrectGuesses.push(incorrectCard.id);
     } else {
       this.deck.cardArray.shift();

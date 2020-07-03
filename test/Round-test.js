@@ -39,22 +39,12 @@ describe('Round', function() {
   })
 
   it('should list the current card', function() {
-    const deck = new Deck([{
-      "id": 3,
-      "question": "What type of prototype method directly modifies the existing array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "mutator method"
-    }, {
-      "id": 4,
-      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "accessor method"
-    }, {
-      "id": 5,
-      "question": "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "iteration method"
-    }]);
+    const cards = [
+      new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method"),
+      new Card(4, "What type of prototype method does not modify the existing array but returns a particular representation of the array?", ["mutator method", "accessor method", "iteration method"], "accessor method"),
+      new Card(5, "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?", ["mutator method", "accessor method", "iteration method"], "iteration method")
+    ];
+    const deck = new Deck(cards);
     const round = new Round(deck);
     (round.deck.cardArray[0]).should.deep.equal({
       "id": 3,
@@ -75,22 +65,12 @@ describe('Round', function() {
   })
   
   it('should be able to return the current card', function() {
-    const deck = new Deck([{
-      "id": 3,
-      "question": "What type of prototype method directly modifies the existing array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "mutator method"
-    }, {
-      "id": 4,
-      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "accessor method"
-    }, {
-      "id": 5,
-      "question": "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "iteration method"
-    }]);
+    const cards = [
+      new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method"),
+      new Card(4, "What type of prototype method does not modify the existing array but returns a particular representation of the array?", ["mutator method", "accessor method", "iteration method"], "accessor method"),
+      new Card(5, "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?", ["mutator method", "accessor method", "iteration method"], "iteration method")
+    ];
+    const deck = new Deck(cards);
     const round = new Round(deck);
     const currentCard = round.returnCurrentCard();
     (currentCard).should.deep.equal({
@@ -102,22 +82,12 @@ describe('Round', function() {
   })
 
   it('should be able to calculate the percentage of questions answered correctly', function() {
-    const deck = new Deck([{
-      "id": 3,
-      "question": "What type of prototype method directly modifies the existing array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "mutator method"
-    }, {
-      "id": 4,
-      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "accessor method"
-    }, {
-      "id": 5,
-      "question": "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "iteration method"
-    }]);
+    const cards = [
+      new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method"),
+      new Card(4, "What type of prototype method does not modify the existing array but returns a particular representation of the array?", ["mutator method", "accessor method", "iteration method"], "accessor method"),
+      new Card(5, "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?", ["mutator method", "accessor method", "iteration method"], "iteration method")
+    ];
+    const deck = new Deck(cards);
     const round = new Round(deck);
     const guess = round.takeTurn('mutator method');
     const guess2 = round.takeTurn('mutator method');
@@ -142,22 +112,12 @@ describe('Round', function() {
 describe('Round - Taking a Turn', function() {
 
   it('should only accept answers in the form of strings', function() {
-    const deck = new Deck([{
-      "id": 3,
-      "question": "What type of prototype method directly modifies the existing array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "mutator method"
-    }, {
-      "id": 4,
-      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "accessor method"
-    }, {
-      "id": 5,
-      "question": "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "iteration method"
-    }]);
+    const cards = [
+      new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method"),
+      new Card(4, "What type of prototype method does not modify the existing array but returns a particular representation of the array?", ["mutator method", "accessor method", "iteration method"], "accessor method"),
+      new Card(5, "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?", ["mutator method", "accessor method", "iteration method"], "iteration method")
+    ];
+    const deck = new Deck(cards);
     const round = new Round(deck);
     const guess = round.takeTurn(7);
     const guess2 = round.takeTurn(false);
@@ -166,44 +126,24 @@ describe('Round - Taking a Turn', function() {
   })
 
   it('should be able to increase the turn count', function() {
-    const deck = new Deck([{
-      "id": 3,
-      "question": "What type of prototype method directly modifies the existing array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "mutator method"
-    }, {
-      "id": 4,
-      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "accessor method"
-    }, {
-      "id": 5,
-      "question": "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "iteration method"
-    }]);
+    const cards = [
+      new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method"),
+      new Card(4, "What type of prototype method does not modify the existing array but returns a particular representation of the array?", ["mutator method", "accessor method", "iteration method"], "accessor method"),
+      new Card(5, "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?", ["mutator method", "accessor method", "iteration method"], "iteration method")
+    ];
+    const deck = new Deck(cards);
     const round = new Round(deck);
     round.takeTurn('mutator method');
     (round.turns).should.equal(1);
   })
 
   it('should evaluate whether a guess is correct or incorrect', function() {
-    const deck = new Deck([{
-      "id": 3,
-      "question": "What type of prototype method directly modifies the existing array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "mutator method"
-    }, {
-      "id": 4,
-      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "accessor method"
-    }, {
-      "id": 5,
-      "question": "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "iteration method"
-    }]);
+        const cards = [
+      new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method"),
+      new Card(4, "What type of prototype method does not modify the existing array but returns a particular representation of the array?", ["mutator method", "accessor method", "iteration method"], "accessor method"),
+      new Card(5, "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?", ["mutator method", "accessor method", "iteration method"], "iteration method")
+    ];
+    const deck = new Deck(cards);
     const round = new Round(deck);
     const guess = round.takeTurn('mutator method');
     const guess2 = round.takeTurn('mutator method');
@@ -212,22 +152,12 @@ describe('Round - Taking a Turn', function() {
   })
 
   it('should remove the current card from the deck', function() {
-    const deck = new Deck([{
-      "id": 3,
-      "question": "What type of prototype method directly modifies the existing array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "mutator method"
-    }, {
-      "id": 4,
-      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "accessor method"
-    }, {
-      "id": 5,
-      "question": "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "iteration method"
-    }]);
+        const cards = [
+      new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method"),
+      new Card(4, "What type of prototype method does not modify the existing array but returns a particular representation of the array?", ["mutator method", "accessor method", "iteration method"], "accessor method"),
+      new Card(5, "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?", ["mutator method", "accessor method", "iteration method"], "iteration method")
+    ];
+    const deck = new Deck(cards);
     const round = new Round(deck);
     round.takeTurn('mutator method');
     const currentCard = round.returnCurrentCard();
@@ -240,22 +170,12 @@ describe('Round - Taking a Turn', function() {
   })
 
   it('should save the id of the incorrect card', function() {
-    const deck = new Deck([{
-      "id": 3,
-      "question": "What type of prototype method directly modifies the existing array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "mutator method"
-    }, {
-      "id": 4,
-      "question": "What type of prototype method does not modify the existing array but returns a particular representation of the array?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "accessor method"
-    }, {
-      "id": 5,
-      "question": "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?",
-      "answerChoices": ["mutator method", "accessor method", "iteration method"],
-      "correctAnswer": "iteration method"
-    }]);
+        const cards = [
+      new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method"),
+      new Card(4, "What type of prototype method does not modify the existing array but returns a particular representation of the array?", ["mutator method", "accessor method", "iteration method"], "accessor method"),
+      new Card(5, "What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?", ["mutator method", "accessor method", "iteration method"], "iteration method")
+    ];
+    const deck = new Deck(cards);
     const round = new Round(deck);
     const guess = round.takeTurn('iteration method');
     (guess).should.equal('incorrect!');
