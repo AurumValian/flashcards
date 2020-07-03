@@ -1,6 +1,6 @@
 # FlashCards
 
-Ben McClung
+[Ben McClung](https://github.com/AurumValian)
 
 ## Abstract
 
